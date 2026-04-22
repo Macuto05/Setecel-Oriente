@@ -35,15 +35,22 @@ const FitBoundsController = ({ geoData }: { geoData: GeoJSON.FeatureCollection }
     // Initial fit
     const timer = setTimeout(fit, 100);
 
-    // Re-fit on window resize (responsive behavior)
-    window.addEventListener('resize', fit);
-    
+    // Debounced resize handler to prevent excessive reflows during scroll
+    let resizeTimer: ReturnType<typeof setTimeout>;
+    const handleResize = () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(fit, 250);
+    };
+
+    window.addEventListener('resize', handleResize);
+
     return () => {
       clearTimeout(timer);
-      window.removeEventListener('resize', fit);
+      clearTimeout(resizeTimer);
+      window.removeEventListener('resize', handleResize);
     };
   }, [map, geoData]);
-  
+
   return null;
 };
 

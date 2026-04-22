@@ -33,6 +33,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 64px;
 }
 
 body {
@@ -102,6 +103,13 @@ body {
 
 .animate-content-enter {
   animation: content-enter 300ms ease-out;
+}
+
+/* Optimize animated elements to prevent layout shifts */
+.animate-gpu {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 @media (prefers-reduced-motion: reduce) {

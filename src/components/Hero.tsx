@@ -227,7 +227,7 @@ export default function Hero() {
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -10 }}
-                        transition={{ duration: 0.3, ease: "easeOut" }}
+                        transition={{ duration: 0.3 }}
                       >
                         <p className="text-white/65 text-xs font-medium tracking-[0.3em] uppercase mb-5 pr-[110px] md:pr-0">
                           Fundada en 1996 · Maturín, Monagas
@@ -256,13 +256,14 @@ export default function Hero() {
                           </div>
                         </div>
 
-                        <p className="text-white/65 text-sm leading-relaxed max-w-md">
-                          Cuando la comunicación es crítica, la disponibilidad no es una opción. Nuestro estatus como{" "}
-                          <strong className="text-white font-semibold">
-                            Distribuidor Certificado y Centro de Servicio Autorizado Motorola (SAM)
-                          </strong>{" "}
-                          garantiza infraestructura resiliente que mantiene su operación sin interrupciones, en cualquier ubicación o condición extrema.
-                        </p>
+                        <div className="space-y-5 text-white/70 text-[15px] leading-relaxed max-w-lg">
+                          <p>
+                            Cuando la comunicación es crítica, la disponibilidad no es una opción. Como el único <strong className="text-white font-semibold">Distribuidor Certificado y Centro de Servicio Autorizado Motorola (SAM)</strong> en el oriente del país, somos el enlace vital para su operación.
+                          </p>
+                          <p>
+                            Diseñamos infraestructura resiliente que garantiza una conectividad sin interrupciones, operando con máxima eficiencia incluso en las ubicaciones más remotas o bajo las condiciones climáticas más extremas.
+                          </p>
+                        </div>
                       </motion.div>
                     ) : (
                       <motion.div
@@ -270,7 +271,7 @@ export default function Hero() {
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -10 }}
-                        transition={{ duration: 0.3, ease: "easeOut" }}
+                        transition={{ duration: 0.3 }}
                       >
                         <p className="text-white/65 text-xs font-medium tracking-[0.3em] uppercase mb-5 pr-[110px] md:pr-0">
                           ¿Por qué confiar en nuestra red?
