@@ -1,0 +1,49 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:21st.dev)",
+      "Bash(python3 \"C:/Users/Marcu/.claude/skills/ui-ux-pro-max/scripts/search.py\" \"B2B industrial telecom corporate premium precision\" --design-system -p \"SETECEL\" -f markdown)",
+      "Bash(py --version)",
+      "Bash(py \"C:/Users/Marcu/.claude/skills/ui-ux-pro-max/scripts/search.py\" \"B2B industrial telecom corporate premium precision\" --design-system -p \"SETECEL\" -f markdown)",
+      "Read(//c/Users/Marcu/.claude/skills/ui-ux-pro-max/**)",
+      "Bash(py \"C:/Users/Marcu/.claude/src/ui-ux-pro-max/scripts/search.py\" \"B2B industrial telecom corporate premium precision\" --design-system -p \"SETECEL\" -f markdown)",
+      "Read(//c/Users/Marcu/.claude/**)",
+      "Bash(py \"C:/Users/Marcu/.claude/src/ui-ux-pro-max/scripts/search.py\" \"B2B industrial telecom corporate premium precision services cards\" --design-system -p \"SETECEL\" -f markdown)",
+      "Bash(py \"C:/Users/Marcu/.claude/src/ui-ux-pro-max/scripts/search.py\" \"card grid hover flip premium industrial\" --domain style -n 3)",
+      "Bash(npm uninstall *)",
+      "WebFetch(domain:www.logo.wine)",
+      "WebFetch(domain:freebiesupply.com)",
+      "Bash(curl -L https://logo.wine/wp-content/uploads/2024/03/Motorola-Solutions-logo-880x660.png -o c:/Users/Marcu/OneDrive/Desktop/Proyectos/SETECEL/public/images/logos/logo-motorola.png --max-time 30)",
+      "Bash(curl -L https://logo.wine/wp-content/uploads/2024/04/Kenwood-Logo-880x660.png -o c:/Users/Marcu/OneDrive/Desktop/Proyectos/SETECEL/public/images/logos/logo-kenwood.png --max-time 30)",
+      "Bash(curl -L https://cdn.freebiesupply.com/logos/large/2x/icom-logo-png-transparent.png -o c:/Users/Marcu/OneDrive/Desktop/Proyectos/SETECEL/public/images/logos/logo-icom.png --max-time 30)",
+      "Bash(curl -L https://seeklogo.com/images/T/telepoint-logo-8C7B5F6C91-seeklogo.com.png -o c:/Users/Marcu/OneDrive/Desktop/Proyectos/SETECEL/public/images/logos/logo-telepoint.png --max-time 30)",
+      "Bash(convert 'C:\\\\Users\\\\Marcu\\\\Downloads\\\\Logo_motorola_solutions.png' -resize 300x120 -quality 90 c:/Users/Marcu/OneDrive/Desktop/Proyectos/SETECEL/public/images/logos/logo-motorola.png.webp)",
+      "Bash(convert \"C:\\\\Users\\\\Marcu\\\\Downloads\\\\Logo_motorola_solutions.png\" -resize 300x120 -quality 90 \"C:\\\\Users\\\\Marcu\\\\OneDrive\\\\Desktop\\\\Proyectos\\\\SETECEL\\\\public\\\\images\\\\logos\\\\logo-motorola-new.webp\")",
+      "PowerShell(& \"convert\" \"C:\\\\Users\\\\Marcu\\\\Downloads\\\\Logo_motorola_solutions.png\" -resize \"300x120\" -quality \"90\" \"C:\\\\Users\\\\Marcu\\\\OneDrive\\\\Desktop\\\\Proyectos\\\\SETECEL\\\\public\\\\images\\\\logos\\\\logo-motorola-temp.webp\")",
+      "Bash(curl -s http://localhost:3001)",
+      "Bash(netstat -ano)",
+      "Bash(start http://localhost:3000/#marcas)",
+      "Bash(curl -s http://localhost:3000)",
+      "Bash(scripts/start-server.sh --project-dir /c/Users/Marcu/OneDrive/Desktop/Proyectos/SETECEL)",
+      "Read(//c/Users/Marcu/**)",
+      "Bash(curl -s http://localhost:3000/api/health)",
+      "Bash(curl -s http://localhost:3000/)",
+      "Read(//tmp/**)",
+      "Bash(curl -s \"https://raw.githubusercontent.com/deldersveld/topojson/master/countries/venezuela/venezuela-estados.json\" -o \"c:/Users/Marcu/OneDrive/Desktop/Proyectos/SETECEL/src/data/venezuela-estados.json\")",
+      "Bash(mkdir -p \"c:/Users/Marcu/OneDrive/Desktop/Proyectos/SETECEL/src/data\")",
+      "Bash(curl -L --ssl-no-revoke -s \"https://raw.githubusercontent.com/deldersveld/topojson/master/countries/venezuela/venezuela-estados.json\" -o \"c:/Users/Marcu/OneDrive/Desktop/Proyectos/SETECEL/src/data/venezuela-estados.json\")",
+      "Bash(curl -L --ssl-no-revoke -s \"https://raw.githubusercontent.com/deldersveld/topojson/master/countries/venezuela/venezuela-departments.json\" -o \"c:/Users/Marcu/OneDrive/Desktop/Proyectos/SETECEL/src/data/venezuela-estados.json\")",
+      "Bash(curl -L --ssl-no-revoke -s \"https://raw.githubusercontent.com/deldersveld/topojson/master/world-countries.json\")",
+      "Bash(python3 -c ' *)",
+      "Bash(curl -L --ssl-no-revoke -s \"https://api.github.com/repos/deldersveld/topojson/contents/countries/venezuela\")",
+      "Bash(python3 -c \"import json,sys; data=json.load\\(sys.stdin\\); [print\\(x['name']\\) for x in data]\")",
+      "Bash(ffmpeg -i \"c:/Users/Marcu/OneDrive/Desktop/Proyectos/SETECEL/public/images/hero-bg-antenna.jpg\" -c:v libwebp -q:v 80 \"c:/Users/Marcu/OneDrive/Desktop/Proyectos/SETECEL/public/images/hero-bg-antenna.webp\")",
+      "Bash(convert \"c:/Users/Marcu/OneDrive/Desktop/Proyectos/SETECEL/public/images/hero-bg-antenna.jpg\" -quality 80 -resize 1920x \"c:/Users/Marcu/OneDrive/Desktop/Proyectos/SETECEL/public/images/hero-bg-antenna.webp\")",
+      "Bash(node -e \"const sharp = require\\('sharp'\\); sharp\\('public/images/hero-bg-antenna.jpg'\\).webp\\({quality: 80}\\).toFile\\('public/images/hero-bg-antenna.webp'\\).then\\(info => console.log\\('Optimized:', info.size, 'bytes'\\)\\).catch\\(e => console.log\\('Error:', e.message\\)\\)\")",
+      "Bash(node -e \"const sharp = require\\('sharp'\\); const fs = require\\('fs'\\); const files = ['mision', 'vision', 'valores']; Promise.all\\(files.map\\(f => sharp\\(\\\\`public/images/about-\\\\${f}.jpg\\\\`\\).resize\\(600, 600, {fit: 'cover', position: 'center'}\\).webp\\({quality: 80}\\).toFile\\(\\\\`public/images/about-\\\\${f}.webp\\\\`\\)\\)\\).then\\(results => results.forEach\\(\\(r, i\\) => console.log\\(\\\\`\\\\${files[i]}.webp: \\\\${\\(r.size/1024\\).toFixed\\(0\\)}KB\\\\`\\)\\)\\).catch\\(e => console.log\\('Error:', e.message\\)\\)\")"
+    ],
+    "additionalDirectories": [
+      "c:\\Users\\Marcu\\Downloads"
+    ]
+  }
+}

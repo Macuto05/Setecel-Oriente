@@ -1,26 +1,109 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Brand */
+  --color-navy: #0B1F3A;
+  --color-navy-hover: #122848;
+  --color-cta: #0F52E8;
+  --color-cta-hover: #0D47D1;
+  --color-card: #163A6E;
+  --color-dot: #4A7FBA;
+
+  /* Surfaces */
+  --color-surface: #F8FAFC;
+
+  /* Text */
+  --color-ink: #020617;
+  --color-ink-muted: #334155;
+  --color-ink-subtle: #64748B;
+  --color-ink-faint: #94A3B8;
+
+  /* Borders */
+  --color-border: #E2E8F0;
+
+  /* Fonts */
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-bodoni);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: white;
+  color: var(--color-ink);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+@keyframes fade-in-right {
+  from { opacity: 0; transform: translateX(8px); }
+  to   { opacity: 1; transform: translateX(0);   }
+}
+
+.animate-fade-in-right {
+  animation: fade-in-right 0.2s ease-out;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* 3D flip card */
+.flip-scene { perspective: 900px; }
+.flip-inner {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.55s cubic-bezier(0.45, 0, 0.55, 1);
+}
+.flip-scene:hover .flip-inner,
+.flip-inner.is-flipped { transform: rotateY(180deg); }
+.flip-face {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.flip-face-back {
+  transform: rotateY(180deg);
+  position: absolute;
+  inset: 0;
+}
+
+/* Brand carousel infinite scroll — seamless loop */
+@keyframes carousel-scroll-infinite {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-25%);
+  }
+}
+
+/* Content transition: cross-fade + slide-up */
+@keyframes content-enter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-content-enter {
+  animation: content-enter 300ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
