@@ -1,5 +1,5 @@
 import { MapPin, Radio } from "lucide-react";
-import VenezuelaMapSVG from "./VenezuelaMapSVG";
+import CoverageMap from "./CoverageMap";
 
 const zones = [
   { state: "Estado Monagas",      desc: "Cobertura completa del estado",          highlight: true  },
@@ -16,9 +16,11 @@ export default function Coverage() {
   return (
     <section id="cobertura" className="bg-navy py-24 lg:py-32 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
 
-          {/* Left */}
+        {/* 2-column layout: text left (40%), map right (60%) */}
+        <div className="grid grid-cols-1 lg:grid-cols-[40%_60%] gap-12 lg:gap-16 items-start">
+
+          {/* ── Left: text content ─────────────────────────── */}
           <div>
             <p className="text-cta text-xs font-semibold tracking-[0.25em] uppercase mb-3">
               Infraestructura Regional
@@ -80,10 +82,11 @@ export default function Coverage() {
             </div>
           </div>
 
-          {/* Right: SVG Map */}
-          <div className="relative w-full" style={{ minHeight: '460px' }}>
-            <VenezuelaMapSVG />
+          {/* ── Right: interactive map ─────────────────────── */}
+          <div className="w-full">
+            <CoverageMap />
           </div>
+
         </div>
       </div>
     </section>

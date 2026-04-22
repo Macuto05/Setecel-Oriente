@@ -41,6 +41,9 @@ const serviceOptions = [
 const inputClass =
   "w-full border-b border-border focus:border-cta bg-transparent py-3 text-ink text-sm outline-none focus-visible:outline-none focus-visible:ring-0 transition-colors duration-200 placeholder:text-ink-faint";
 
+const labelClass =
+  "block text-ink-muted text-xs font-semibold tracking-widest uppercase mb-3";
+
 export default function Contact() {
   const [sent, setSent] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -158,48 +161,48 @@ export default function Contact() {
                 <form onSubmit={handleSubmit} className="space-y-6" noValidate>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
-                      <label htmlFor="nombre" className="block text-ink-muted text-xs font-semibold tracking-widest uppercase mb-3">
+                      <label htmlFor="nombre" className={labelClass}>
                         Nombre <span aria-label="requerido" className="text-cta">*</span>
                       </label>
                       <input
                         id="nombre" type="text" required autoComplete="name"
                         placeholder="Tu nombre completo"
-                        className={inputClass}
+                        className={`${inputClass} min-h-[44px]`}
                         suppressHydrationWarning
                       />
                     </div>
                     <div>
-                      <label htmlFor="empresa" className="block text-ink-muted text-xs font-semibold tracking-widest uppercase mb-3">
+                      <label htmlFor="empresa" className={labelClass}>
                         Empresa
                       </label>
                       <input
                         id="empresa" type="text" autoComplete="organization"
                         placeholder="Nombre de tu empresa"
-                        className={inputClass}
+                        className={`${inputClass} min-h-[44px]`}
                         suppressHydrationWarning
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label htmlFor="telefono" className="block text-ink-muted text-xs font-semibold tracking-widest uppercase mb-3">
+                    <label htmlFor="telefono" className={labelClass}>
                       Teléfono <span aria-label="requerido" className="text-cta">*</span>
                     </label>
                     <input
                       id="telefono" type="tel" required autoComplete="tel"
                       placeholder="04XX-XXX.XX.XX"
-                      className={inputClass}
+                      className={`${inputClass} min-h-[44px]`}
                       suppressHydrationWarning
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="servicio" className="block text-ink-muted text-xs font-semibold tracking-widest uppercase mb-3">
+                    <label htmlFor="servicio" className={labelClass}>
                       Servicio de interés
                     </label>
                     <select
                       id="servicio"
-                      className={`${inputClass} cursor-pointer`}
+                      className={`${inputClass} cursor-pointer min-h-[44px]`}
                       suppressHydrationWarning
                     >
                       <option value="" disabled>Selecciona un servicio</option>
@@ -210,13 +213,13 @@ export default function Contact() {
                   </div>
 
                   <div>
-                    <label htmlFor="mensaje" className="block text-ink-muted text-xs font-semibold tracking-widest uppercase mb-3">
+                    <label htmlFor="mensaje" className={labelClass}>
                       Mensaje <span aria-label="requerido" className="text-cta">*</span>
                     </label>
                     <textarea
                       id="mensaje" required rows={4}
                       placeholder="Cuéntanos tu operación y lo que necesitas..."
-                      className={`${inputClass} resize-none`}
+                      className={`${inputClass} resize-none min-h-[44px]`}
                       suppressHydrationWarning
                     />
                   </div>
@@ -225,7 +228,7 @@ export default function Contact() {
                     type="submit"
                     disabled={submitting}
                     suppressHydrationWarning
-                    className="w-full py-3 bg-cta hover:bg-cta-hover disabled:opacity-60 disabled:cursor-not-allowed text-white font-semibold rounded transition-colors duration-200 text-sm flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cta focus-visible:ring-offset-2"
+                    className="w-full py-3 bg-cta hover:bg-cta-hover disabled:opacity-60 disabled:cursor-not-allowed text-white font-semibold rounded transition-colors duration-200 text-sm flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cta focus-visible:ring-offset-2 min-h-[44px]"
                   >
                     {submitting ? (
                       <>

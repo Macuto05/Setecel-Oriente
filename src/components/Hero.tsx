@@ -108,17 +108,15 @@ export default function Hero() {
           </p>
 
           <h1
-            className="font-[family-name:var(--font-bodoni)] text-white leading-[1.1] mb-6"
-            style={{ fontSize: "clamp(2.8rem, 7vw, 5.5rem)" }}
+            className="font-[family-name:var(--font-bodoni)] text-white leading-[1.3] mb-6 max-w-4xl"
+            style={{ fontSize: "clamp(3.2rem, 9.5vw, 8rem)" }}
           >
-            Comunicaciones críticas
-            <br />
-            <span className="italic">donde otros no llegan.</span>
+            Liderazgo{" "}
+            <span className="italic">sin interferencias.</span>
           </h1>
 
           <p className="text-white/70 text-lg font-light max-w-xl mb-10 leading-relaxed">
-            30 años conectando industrias en los estados Monagas,
-            Anzoátegui y Bolívar con infraestructura inquebrantable.
+            Único Distribuidor Certificado y Centro de Servicio Autorizado Motorola (SAM) en el nororiente venezolano.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4">
@@ -196,86 +194,109 @@ export default function Hero() {
               </div>
 
               {/* Animated text content only */}
-              <AnimatePresence mode="wait">
-                {!showWhyUs ? (
-                  <motion.div
-                    key="info"
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.3, ease: "easeOut" }}
-                  >
-                    <p className="text-white/65 text-xs font-medium tracking-[0.3em] uppercase mb-5">
-                      Fundada en 1996 · Maturín, Monagas
-                    </p>
-
-                    <div className="flex items-start gap-4 mb-6" aria-label="30 años operando sin interrupciones">
-                      <span
-                        className="font-extrabold text-white leading-none tracking-tight"
-                        style={{ fontSize: "clamp(4rem, 8vw, 7rem)" }}
-                      >
-                        30
-                      </span>
-                      <div className="flex flex-col justify-start gap-1.5 pt-1">
-                        <span
-                          className="font-bold text-white leading-none"
-                          style={{ fontSize: "clamp(1.9rem, 3.5vw, 3.2rem)" }}
-                        >
-                          años
-                        </span>
-                        <p
-                          className="text-white/75 font-medium leading-none"
-                          style={{ fontSize: "clamp(0.8rem, 1.4vw, 1rem)" }}
-                        >
-                          operando sin interrupciones
-                        </p>
+              <div className="relative">
+                {/* Invisible spacer to maintain static height based on the taller 'Por qué' content */}
+                <div aria-hidden="true" className="invisible pointer-events-none select-none">
+                  <p className="text-white/65 text-xs font-medium tracking-[0.3em] uppercase mb-5 pr-[110px] md:pr-0">
+                    ¿Por qué confiar en nuestra red?
+                  </p>
+                  <div className="divide-y divide-white/10">
+                    {pillars.map((pillar, i) => (
+                      <div key={`spacer-${i}`} className="flex items-start gap-3 py-4 first:pt-0 last:pb-0">
+                        <div className="w-7 h-7 rounded-lg bg-white/10 flex items-center justify-center text-white flex-shrink-0 mt-0.5">
+                          {pillar.icon}
+                        </div>
+                        <div>
+                          <p className="text-white font-semibold text-sm leading-tight mb-1">
+                            {pillar.title}
+                          </p>
+                          <p className="text-white/65 text-sm leading-relaxed">
+                            {pillar.description}
+                          </p>
+                        </div>
                       </div>
-                    </div>
+                    ))}
+                  </div>
+                </div>
 
-                    <p className="text-white/65 text-sm leading-relaxed max-w-md">
-                      Somos el{" "}
-                      <strong className="text-white font-semibold">
-                        único Distribuidor Certificado y Centro de Servicio Autorizado Motorola (SAM)
-                      </strong>{" "}
-                      en el nororiente venezolano.
-                      <br />
-                      <br />
-                      Nuestro estatus oficial le garantiza soporte técnico
-                      especializado, repuestos originales y el respaldo directo de la marca, asegurando
-                      la máxima confiabilidad y rendimiento para sus equipos.
-                    </p>
-                  </motion.div>
-                ) : (
-                  <motion.div
-                    key="why-us"
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.3, ease: "easeOut" }}
-                  >
-                    <p className="text-white/65 text-xs font-medium tracking-[0.3em] uppercase mb-5 pr-24">
-                      ¿Por qué confiar en nuestra red?
-                    </p>
-                    <div className="divide-y divide-white/10">
-                      {pillars.map((pillar, i) => (
-                        <div key={i} className="flex items-start gap-3 py-4 first:pt-0 last:pb-0">
-                          <div className="w-7 h-7 rounded-lg bg-cta/15 flex items-center justify-center text-cta flex-shrink-0 mt-0.5">
-                            {pillar.icon}
-                          </div>
-                          <div>
-                            <p className="text-white font-semibold text-sm leading-tight mb-1">
-                              {pillar.title}
-                            </p>
-                            <p className="text-white/65 text-xs leading-relaxed">
-                              {pillar.description}
+                <div className="absolute inset-x-0 top-0">
+                  <AnimatePresence mode="wait">
+                    {!showWhyUs ? (
+                      <motion.div
+                        key="info"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        transition={{ duration: 0.3, ease: "easeOut" }}
+                      >
+                        <p className="text-white/65 text-xs font-medium tracking-[0.3em] uppercase mb-5 pr-[110px] md:pr-0">
+                          Fundada en 1996 · Maturín, Monagas
+                        </p>
+
+                        <div className="flex items-start gap-4 mb-6" aria-label="30 años operando sin interrupciones">
+                          <span
+                            className="font-extrabold text-white leading-none tracking-tight"
+                            style={{ fontSize: "clamp(4rem, 8vw, 7rem)" }}
+                          >
+                            30
+                          </span>
+                          <div className="flex flex-col justify-start gap-1.5 pt-1">
+                            <span
+                              className="font-bold text-white leading-none"
+                              style={{ fontSize: "clamp(1.9rem, 3.5vw, 3.2rem)" }}
+                            >
+                              años
+                            </span>
+                            <p
+                              className="text-white/75 font-medium leading-none"
+                              style={{ fontSize: "clamp(0.8rem, 1.4vw, 1rem)" }}
+                            >
+                              operando sin interrupciones
                             </p>
                           </div>
                         </div>
-                      ))}
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+
+                        <p className="text-white/65 text-sm leading-relaxed max-w-md">
+                          Cuando la comunicación es crítica, la disponibilidad no es una opción. Nuestro estatus como{" "}
+                          <strong className="text-white font-semibold">
+                            Distribuidor Certificado y Centro de Servicio Autorizado Motorola (SAM)
+                          </strong>{" "}
+                          garantiza infraestructura resiliente que mantiene su operación sin interrupciones, en cualquier ubicación o condición extrema.
+                        </p>
+                      </motion.div>
+                    ) : (
+                      <motion.div
+                        key="why-us"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        transition={{ duration: 0.3, ease: "easeOut" }}
+                      >
+                        <p className="text-white/65 text-xs font-medium tracking-[0.3em] uppercase mb-5 pr-[110px] md:pr-0">
+                          ¿Por qué confiar en nuestra red?
+                        </p>
+                        <div className="divide-y divide-white/10">
+                          {pillars.map((pillar, i) => (
+                            <div key={i} className="flex items-start gap-3 py-4 first:pt-0 last:pb-0">
+                              <div className="w-7 h-7 rounded-lg bg-white/10 flex items-center justify-center text-white flex-shrink-0 mt-0.5">
+                                {pillar.icon}
+                              </div>
+                              <div>
+                                <p className="text-white font-semibold text-sm leading-tight mb-1">
+                                  {pillar.title}
+                                </p>
+                                <p className="text-white/65 text-sm leading-relaxed">
+                                  {pillar.description}
+                                </p>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              </div>
 
               {/* Static section - always visible */}
               <div className="mt-6 pt-5 border-t border-white/10">
@@ -287,21 +308,25 @@ export default function Hero() {
                   {states.map((state) => (
                     <div
                       key={state.name}
-                      className="relative rounded-xl overflow-hidden h-[68px] bg-navy"
+                      className="relative rounded-xl overflow-hidden h-[96px] bg-navy group"
                     >
                       <Image
                         src={state.image}
                         alt={`Estado ${state.name}`}
                         fill
                         loading="lazy"
-                        className="object-cover object-center"
+                        className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
                         sizes="(max-width: 1024px) 30vw, 210px"
                       />
-                      <div className="absolute inset-0 flex flex-col justify-end p-2.5">
+                      
+                      {/* Sombreado inferior para asegurar contraste del texto */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" aria-hidden="true" />
+                      
+                      <div className="absolute inset-0 flex flex-col justify-end p-3 pointer-events-none">
                         {state.highlight && (
-                          <div className="w-3 h-0.5 bg-cta mb-1" aria-hidden="true" />
+                          <div className="w-3.5 h-[3px] bg-cta mb-1.5 rounded-full" aria-hidden="true" />
                         )}
-                        <p className="text-white text-xs font-semibold leading-tight drop-shadow-sm">
+                        <p className="text-white text-sm font-semibold leading-tight drop-shadow-md">
                           {state.name}
                         </p>
                       </div>

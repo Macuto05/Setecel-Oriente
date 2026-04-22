@@ -24,6 +24,11 @@
   /* Fonts */
   --font-sans: var(--font-inter);
   --font-display: var(--font-bodoni);
+
+  /* Animation Timing Scale */
+  --duration-fast: 150ms;
+  --duration-normal: 300ms;
+  --duration-slow: 500ms;
 }
 
 html {

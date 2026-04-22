@@ -1,7 +1,8 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
+import Marquee from "react-fast-marquee";
 
 interface Logo {
   name: string;
@@ -17,7 +18,6 @@ const logos: Logo[] = [
 ];
 
 export default function Brands() {
-  const trackRef = useRef<HTMLDivElement>(null);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
@@ -40,42 +40,37 @@ export default function Brands() {
         </div>
 
         {/* Carousel Container — elevated with shadow and border */}
-        <div className="relative overflow-hidden rounded-lg bg-white border border-border shadow-sm">
-          <div
-            ref={trackRef}
-            className="flex gap-6 lg:gap-8 px-6 lg:px-12 py-8 lg:py-10"
-            style={{
-              willChange: "transform",
-              animation: "carousel-scroll-infinite 6000ms linear infinite",
-            }}
-          >
-            {/* Render logos twice for seamless infinite loop */}
-            {[...logos, ...logos].map((logo, i) => {
-              const actualIndex = i % logos.length;
-              const isHovered = hoveredIndex === actualIndex;
+        <div
+          className="relative overflow-hidden rounded-lg bg-white border border-border shadow-sm py-8 lg:py-10"
+          role="region"
+          aria-label="Carousel de marcas asociadas"
+          aria-roledescription="carrusel"
+        >
+          <Marquee speed={40} gradient={false} pauseOnHover={true}>
+            {logos.map((logo, i) => {
+              const isHovered = hoveredIndex === i;
 
               return (
                 <div
                   key={`${logo.name}-${i}`}
-                  className={`flex-shrink-0 flex items-center justify-center transition-all duration-200 rounded-lg px-3 lg:px-4 py-3 cursor-default ${
+                  className={`mx-8 lg:mx-12 flex-shrink-0 flex items-center justify-center transition-all duration-300 rounded-lg px-4 py-3 cursor-pointer ${
                     isHovered
                       ? "bg-surface shadow-xs"
                       : "bg-transparent"
                   }`}
                   style={{
-                    minWidth: "auto",
-                    height: "60px",
+                    height: "70px",
                   }}
-                  onMouseEnter={() => setHoveredIndex(actualIndex)}
+                  onMouseEnter={() => setHoveredIndex(i)}
                   onMouseLeave={() => setHoveredIndex(null)}
                 >
                   <Image
                     src={logo.src}
                     alt={logo.alt}
-                    width={150}
-                    height={60}
-                    className={`h-full w-auto object-contain transition-all duration-200 ${
-                      isHovered ? "scale-110" : "scale-100"
+                    width={160}
+                    height={70}
+                    className={`h-full w-auto object-contain transition-all duration-300 ${
+                      isHovered ? "scale-110 opacity-100" : "scale-100 opacity-75 hover:opacity-100"
                     }`}
                     priority={i < 4}
                     quality={90}
@@ -83,11 +78,11 @@ export default function Brands() {
                 </div>
               );
             })}
-          </div>
+          </Marquee>
 
           {/* Gradient fade-out edges */}
-          <div className="absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-white via-white/80 to-transparent pointer-events-none" />
-          <div className="absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-white via-white/80 to-transparent pointer-events-none" />
+          <div className="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-white via-white/80 to-transparent pointer-events-none z-10" />
+          <div className="absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-white via-white/80 to-transparent pointer-events-none z-10" />
         </div>
 
         {/* Footer text */}

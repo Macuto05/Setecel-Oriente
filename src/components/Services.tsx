@@ -160,8 +160,10 @@ function ServiceCard({ service, index, isMobileFlipped, onToggle }: CardProps) {
                 src={service.image!}
                 alt=""
                 fill
-                // Eager-load above-fold cards to prevent CLS — [P2 optimize]
+                // Decorative image; text content fully describes service. WCAG compliant.
+                // Eager-load above-fold cards to prevent CLS; below-fold uses lazy-load
                 priority={isAboveFold}
+                loading={isAboveFold ? undefined : "lazy"}
                 className="object-cover"
                 sizes="(max-width: 1024px) 50vw, 33vw"
                 aria-hidden="true"

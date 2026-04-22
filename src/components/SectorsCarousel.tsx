@@ -37,14 +37,14 @@ export default function SectorsCarousel() {
           <div className="flex gap-3">
             <button
               onClick={scrollPrev}
-              className="w-11 h-11 rounded-full border border-border hover:border-cta hover:text-cta text-ink-muted flex items-center justify-center transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cta focus-visible:ring-offset-1"
+              className="min-h-[44px] min-w-[44px] rounded-full border border-border hover:border-cta hover:text-cta text-ink-muted flex items-center justify-center transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cta focus-visible:ring-offset-1"
               aria-label="Sector anterior"
             >
               <ChevronLeft size={18} />
             </button>
             <button
               onClick={scrollNext}
-              className="w-11 h-11 rounded-full border border-border hover:border-cta hover:text-cta text-ink-muted flex items-center justify-center transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cta focus-visible:ring-offset-1"
+              className="min-h-[44px] min-w-[44px] rounded-full border border-border hover:border-cta hover:text-cta text-ink-muted flex items-center justify-center transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cta focus-visible:ring-offset-1"
               aria-label="Sector siguiente"
             >
               <ChevronRight size={18} />
@@ -53,7 +53,13 @@ export default function SectorsCarousel() {
         </div>
       </div>
 
-      <div ref={emblaRef} className="overflow-hidden" aria-label="Carrusel de sectores atendidos">
+      <div
+        ref={emblaRef}
+        className="overflow-hidden"
+        role="region"
+        aria-label="Carrusel de sectores atendidos"
+        aria-roledescription="carrusel"
+      >
         <div
           className="flex gap-4"
           style={{ paddingLeft: "max(1.5rem, calc((100vw - 1152px) / 2 + 3rem))" }}

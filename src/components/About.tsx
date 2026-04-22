@@ -64,7 +64,7 @@ const sectionIds = ["mision", "vision", "valores"] as const;
 
 const contentVariants = {
   hidden: { opacity: 0, y: 10 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.3, ease: "easeOut" } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.3 } },
   exit: { opacity: 0, y: 10, transition: { duration: 0.2 } },
 };
 
@@ -101,15 +101,19 @@ export default function About() {
         {/* Two Column Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-[320px_1.8fr] gap-8 lg:gap-16 items-start">
 
-          {/* ── Left Column: Selectable Cards ──────────────────────── */}
-          <div className="flex flex-col gap-4">
+          {/* ── Left Column: Selectable Tabs ──────────────────────── */}
+          <div className="flex flex-col gap-4" role="tablist" aria-label="Selecciona una sección: Misión, Visión o Valores">
             <AnimatePresence mode="sync">
               {sections.map((section) => (
                 <motion.button
                   key={section.id}
+                  id={`tab-${section.id}`}
                   onClick={() => setSelectedId(section.id)}
                   suppressHydrationWarning
-                  className={`text-left px-5 py-4 rounded-2xl border-2 transition-all flex items-center gap-4 ${
+                  role="tab"
+                  aria-selected={selectedId === section.id}
+                  aria-controls={`panel-${section.id}`}
+                  className={`text-left px-5 py-4 rounded-2xl border-2 transition-all flex items-center gap-4 min-h-[44px] ${
                     selectedId === section.id
                       ? "border-cta bg-white shadow-md"
                       : "border-border bg-surface hover:border-border/60"
@@ -146,71 +150,99 @@ export default function About() {
           </div>
 
           {/* ── Right Column: Main Content Card ────────────────────── */}
-          <div className="bg-white rounded-3xl border border-border overflow-hidden shadow-sm h-full lg:min-h-[500px]">
+          <div
+            className="bg-white rounded-3xl border border-border overflow-hidden shadow-sm h-full lg:min-h-[500px]"
+            role="tabpanel"
+            id={`panel-${selected.id}`}
+            aria-labelledby={`tab-${selected.id}`}
+          >
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 items-stretch h-full">
 
               {/* Left Content */}
-              <div className="p-8 lg:p-12 flex flex-col justify-between overflow-hidden min-h-96 lg:min-h-[500px]">
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={selected.id}
-                    variants={contentVariants}
-                    initial="hidden"
-                    animate="visible"
-                    exit="exit"
-                    className="flex-1 flex flex-col"
-                  >
-                    {/* Icon */}
-                    <div className="w-12 h-12 rounded-2xl bg-cta/10 flex items-center justify-center text-cta mb-6 flex-shrink-0">
-                      {selected.icon}
-                    </div>
-
-                    {/* Title & Description */}
-                    <div className="flex-1">
-                      <h3 className="text-3xl lg:text-4xl font-bold text-ink mb-6 leading-tight">
-                        {selected.title}
-                      </h3>
-
-                      {/* Regular description */}
-                      {typeof selected.description === "string" && (
-                        <p className="text-ink-muted text-base leading-relaxed">
-                          {selected.description}
-                        </p>
-                      )}
-
-                      {/* Values list */}
-                      {selected.values && (
-                        <div className="space-y-4">
-                          {selected.values.map((value, idx) => (
-                            <div key={idx} className="text-ink-muted text-base leading-relaxed">
-                              <span className="font-bold text-ink">{value.title}</span>{" "}
-                              {value.description}
-                            </div>
-                          ))}
+              <div className="relative p-8 lg:p-12 overflow-hidden min-h-96 lg:min-h-[500px]">
+                {/* Invisible spacer (Valores) to enforce static container height */}
+                <div aria-hidden="true" className="invisible pointer-events-none select-none flex flex-col">
+                  <div className="w-12 h-12 rounded-2xl bg-cta/10 flex items-center justify-center text-cta mb-6 flex-shrink-0">
+                    {sections[2].icon}
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-3xl lg:text-4xl font-bold text-ink mb-6 leading-tight">
+                      {sections[2].title}
+                    </h3>
+                    <div className="space-y-4">
+                      {sections[2].values?.map((value, idx) => (
+                        <div key={idx} className="text-ink-muted text-base leading-relaxed">
+                          <span className="font-bold text-ink">{value.title}</span>{" "}
+                          {value.description}
                         </div>
-                      )}
+                      ))}
                     </div>
-                  </motion.div>
-                </AnimatePresence>
+                  </div>
+                </div>
+
+                <div className="absolute inset-0 p-8 lg:p-12 flex flex-col">
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={selected.id}
+                      variants={contentVariants}
+                      initial="hidden"
+                      animate="visible"
+                      exit="exit"
+                      className="flex-1 flex flex-col"
+                    >
+                      {/* Icon */}
+                      <div className="w-12 h-12 rounded-2xl bg-cta/10 flex items-center justify-center text-cta mb-6 flex-shrink-0">
+                        {selected.icon}
+                      </div>
+
+                      {/* Title & Description */}
+                      <div className="flex-1">
+                        <h3 className="text-3xl lg:text-4xl font-bold text-ink mb-6 leading-tight">
+                          {selected.title}
+                        </h3>
+
+                        {/* Regular description */}
+                        {typeof selected.description === "string" && selected.description && (
+                          <p className="text-ink-muted text-base leading-relaxed">
+                            {selected.description}
+                          </p>
+                        )}
+
+                        {/* Values list */}
+                        {selected.values && (
+                          <div className="space-y-4">
+                            {selected.values.map((value, idx) => (
+                              <div key={idx} className="text-ink-muted text-base leading-relaxed">
+                                <span className="font-bold text-ink">{value.title}</span>{" "}
+                                {value.description}
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    </motion.div>
+                  </AnimatePresence>
+                </div>
               </div>
 
               {/* Right Image Container */}
               <div className="p-8 lg:p-10 flex items-center justify-center bg-surface">
-                <div className="relative w-full h-full max-w-sm max-h-sm rounded-2xl overflow-hidden shadow-md">
+                <div className="relative w-full aspect-square lg:aspect-auto lg:h-full max-w-sm rounded-2xl overflow-hidden shadow-md">
                   <AnimatePresence mode="wait">
                     <motion.div
                       key={selected.id}
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
-                      transition={{ duration: 0.3, ease: "easeOut" }}
+                      transition={{ duration: 0.3 }}
                       className="absolute inset-0"
                     >
                       <Image
                         src={selected.image}
                         alt={selected.alt}
                         fill
-                        priority
+                        priority={false}
+                        loading="lazy"
                         className="object-cover object-center"
                         sizes="(max-width: 1024px) 100vw, 50vw"
                       />

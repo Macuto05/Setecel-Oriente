@@ -68,14 +68,14 @@ export default function Navbar() {
 
         <a
           href="#contacto"
-          className="hidden md:inline-flex items-center px-5 py-2.5 bg-cta hover:bg-cta-hover text-white text-sm font-semibold rounded-md transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-navy"
+          className="hidden md:inline-flex items-center px-5 py-2.5 bg-cta hover:bg-cta-hover text-white text-sm font-semibold rounded-md transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-navy min-h-[44px]"
         >
           Solicitar Cotización
         </a>
 
         <button
           ref={menuButtonRef}
-          className="md:hidden text-white p-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-sm"
+          className="md:hidden text-white min-h-[44px] min-w-[44px] flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-sm"
           onClick={() => setMenuOpen(true)}
           aria-label="Abrir menú"
           aria-expanded={menuOpen}
@@ -94,7 +94,7 @@ export default function Navbar() {
           className="md:hidden fixed inset-0 bg-navy z-40 flex flex-col items-center justify-center gap-10"
         >
           <button
-            className="absolute top-5 right-6 text-white p-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-sm"
+            className="absolute top-5 right-6 text-white min-h-[44px] min-w-[44px] flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-sm"
             onClick={() => setMenuOpen(false)}
             aria-label="Cerrar menú"
           >
