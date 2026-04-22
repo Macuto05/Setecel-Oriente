@@ -42,7 +42,6 @@ export default function Brands() {
         {/* Carousel Container — elevated with shadow and border */}
         <div
           className="relative overflow-hidden rounded-lg bg-white border border-border shadow-sm py-8 lg:py-10"
-          style={{ height: '110px', display: 'flex', alignItems: 'center' }}
           role="region"
           aria-label="Carousel de marcas asociadas"
           aria-roledescription="carrusel"

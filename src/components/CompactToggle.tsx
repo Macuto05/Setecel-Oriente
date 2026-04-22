@@ -35,7 +35,7 @@ export default function CompactToggle({
         )}
       </motion.div>
       <span className="text-xs font-semibold text-white/80 group-hover:text-white transition-colors">
-        {isActive ? "Por qué" : "Quiénes"}
+        {isActive ? "Confianza" : "Trayectoria"}
       </span>
     </button>
   );

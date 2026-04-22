@@ -116,7 +116,7 @@ function ServiceCard({ service, index, isMobileFlipped, onToggle }: CardProps) {
   return (
     <div
       suppressHydrationWarning
-      style={{ perspective: "1000px", cursor: "pointer", aspectRatio: "1/1" }}
+      style={{ perspective: "1000px", cursor: "pointer" }}
       className="h-[200px] sm:h-[220px] lg:h-[260px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cta focus-visible:ring-offset-2 rounded-2xl"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}

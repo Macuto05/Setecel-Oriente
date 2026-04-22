@@ -158,7 +158,6 @@ export default function StatsAndSectors() {
                   <div
                     key={state.name}
                     className="relative rounded-xl overflow-hidden h-[68px] bg-navy"
-                    style={{ aspectRatio: "210/68" }}
                   >
                     <Image
                       src={state.image}

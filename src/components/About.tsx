@@ -227,7 +227,7 @@ export default function About() {
 
               {/* Right Image Container */}
               <div className="p-8 lg:p-10 flex items-center justify-center bg-surface">
-                <div className="relative w-full aspect-square max-w-sm rounded-2xl overflow-hidden shadow-md">
+                <div className="relative w-full aspect-square lg:aspect-auto lg:h-full max-w-sm rounded-2xl overflow-hidden shadow-md">
                   <AnimatePresence mode="wait">
                     <motion.div
                       key={selected.id}

@@ -68,7 +68,7 @@ export default function SectorsCarousel() {
             <div
               key={sector.name}
               className="relative flex-shrink-0 w-[260px] md:w-[320px] h-[380px] md:h-[440px] rounded-xl overflow-hidden group"
-              style={{ flex: "0 0 auto", aspectRatio: "260/380" }}
+              style={{ flex: "0 0 auto" }}
             >
               <Image
                 src={sector.image}
