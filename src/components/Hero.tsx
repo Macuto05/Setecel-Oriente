@@ -78,10 +78,32 @@ export default function Hero() {
     };
   }, [emblaApi, paused]);
 
+  const [vh, setVh] = useState<string>("100dvh");
+
+  useEffect(() => {
+    // Lock height on initial load to prevent "jumping" when mobile browser bars hide/show
+    const setRealVh = () => {
+      const height = window.innerHeight;
+      setVh(`${height}px`);
+    };
+
+    setRealVh();
+    // We only update on orientation change, not on every scroll resize
+    window.addEventListener("orientationchange", () => {
+      // Small delay to let the browser update its innerHeight
+      setTimeout(setRealVh, 200);
+    });
+
+    return () => window.removeEventListener("orientationchange", setRealVh);
+  }, []);
+
   return (
     <section className="relative bg-navy overflow-hidden">
       {/* ── UPPER SECTION: Hero with background image ──────────────────── */}
-      <div className="relative min-h-dvh flex flex-col justify-center">
+      <div 
+        className="relative flex flex-col justify-center"
+        style={{ minHeight: vh }}
+      >
         <Image
           src="/images/hero-bg-antenna.webp"
           alt="Antenas parabólicas de radiocomunicación profesional montadas en mástil"
