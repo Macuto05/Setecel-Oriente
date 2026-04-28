@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Services from "@/components/Services";
+import WhyRadio from "@/components/WhyRadio";
 import About from "@/components/About";
 import Coverage from "@/components/Coverage";
 import Brands from "@/components/Brands";
@@ -15,6 +16,7 @@ export default function Home() {
       <main>
         <Hero />
         <Services />
+        <WhyRadio />
         <About />
         <Coverage />
         <Brands />

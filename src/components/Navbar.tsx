@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { Menu, X } from "lucide-react";
+import Image from "next/image";
 import clsx from "clsx";
 
 const links = [
@@ -47,11 +48,15 @@ export default function Navbar() {
       )}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between h-16 py-4">
-        <a
-          href="#"
-          className="text-white font-bold tracking-widest text-sm uppercase"
-        >
-          SETECEL<span className="text-cta">.</span>
+        <a href="#" aria-label="SETECEL ORIENTE — Inicio">
+          <Image
+            src="/images/logos/logo-setecel.png"
+            alt="SETECEL ORIENTE, C.A."
+            width={160}
+            height={40}
+            priority
+            style={{ width: "auto", height: "46px", filter: "brightness(0) invert(1)" }}
+          />
         </a>
 
         <nav className="hidden md:flex items-center gap-10" aria-label="Navegación principal">
