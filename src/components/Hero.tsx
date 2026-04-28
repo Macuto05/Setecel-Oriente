@@ -221,31 +221,38 @@ export default function Hero() {
                 <div aria-hidden="true" className="invisible pointer-events-none select-none grid overflow-hidden">
                   {/* View 1: Trayectoria */}
                   <div className="col-start-1 row-start-1">
-                    <p className="text-xs tracking-[0.3em] uppercase mb-5">Fundada en 1996</p>
-                    <div className="flex items-start gap-4 mb-6">
-                      <span className="font-extrabold text-[clamp(4rem,8vw,7rem)]">30</span>
-                      <div className="flex flex-col pt-1">
-                        <span className="font-bold text-[clamp(1.9rem,3.5vw,3.2rem)]">años</span>
-                        <p className="font-medium text-[clamp(0.8rem,1.4vw,1rem)]">operando</p>
+                    <p className="text-xs font-medium tracking-[0.3em] uppercase mb-3 pr-[110px] md:pr-0">
+                      Fundada en 1996 · Maturín, Monagas
+                    </p>
+                    <div className="flex items-start gap-4 mb-4">
+                      <span className="font-extrabold leading-none tracking-tight" style={{ fontSize: "clamp(4rem, 8vw, 7rem)" }}>30</span>
+                      <div className="flex flex-col justify-start gap-1.5 pt-1">
+                        <span className="font-bold leading-none" style={{ fontSize: "clamp(1.9rem, 3.5vw, 3.2rem)" }}>años</span>
+                        <p className="font-medium leading-none" style={{ fontSize: "clamp(0.8rem, 1.4vw, 1rem)" }}>operando sin interrupciones</p>
                       </div>
                     </div>
                     <div className="space-y-4 text-sm leading-relaxed max-w-lg">
-                      <p>A</p>
-                      <p>B</p>
+                      <p>Cuando la comunicación es crítica, la disponibilidad no es una opción. Como el único Distribuidor Certificado y Centro de Servicio Autorizado Motorola (SAM) en el oriente del país, somos el enlace vital para su operación.</p>
+                      <p>Diseñamos infraestructura resiliente que garantiza una conectividad sin interrupciones, operando con máxima eficiencia incluso en las ubicaciones más remotas o bajo las condiciones climáticas más extremas.</p>
                     </div>
                   </div>
 
                   {/* View 2: Pillars (Confianza) */}
-                  <div className="col-start-1 row-start-1 divide-y divide-white/10">
-                    {pillars.map((pillar, i) => (
-                      <div key={`spacer-${i}`} className="flex items-start gap-3 py-4 first:pt-0 last:pb-0">
-                        <div className="w-7 h-7 flex-shrink-0"></div>
-                        <div>
-                          <p className="font-semibold text-sm leading-tight mb-1">{pillar.title}</p>
-                          <p className="text-sm leading-relaxed">{pillar.description}</p>
+                  <div className="col-start-1 row-start-1">
+                    <p className="text-xs font-medium tracking-[0.3em] uppercase mb-5 pr-[110px] md:pr-0">
+                      ¿Por qué confiar en nuestra red?
+                    </p>
+                    <div className="divide-y divide-white/10">
+                      {pillars.map((pillar, i) => (
+                        <div key={`spacer-${i}`} className="flex items-start gap-3 py-4 first:pt-0 last:pb-0">
+                          <div className="w-7 h-7 flex-shrink-0 mt-0.5"></div>
+                          <div>
+                            <p className="font-semibold text-sm leading-tight mb-1">{pillar.title}</p>
+                            <p className="text-sm leading-relaxed">{pillar.description}</p>
+                          </div>
                         </div>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
                 </div>
 
@@ -330,7 +337,7 @@ export default function Hero() {
               </div>
 
               {/* Static section - always visible */}
-              <div className="mt-8 pt-6 border-t border-white/10">
+              <div className="mt-5 pt-5 border-t border-white/10">
                 <p className="flex items-center gap-1.5 text-white/55 text-xs font-semibold tracking-widest uppercase mb-3">
                   <MapPin size={11} className="text-cta" aria-hidden="true" />
                   3 estados con cobertura activa

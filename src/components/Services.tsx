@@ -119,10 +119,14 @@ function ServiceCard({ service, index, isMobileFlipped, isPeeking, onToggle }: C
       suppressHydrationWarning
       style={{ perspective: "1000px", cursor: "pointer" }}
       className="h-[200px] sm:h-[220px] lg:h-[260px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cta focus-visible:ring-offset-2 rounded-2xl"
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
+      onPointerEnter={(e) => {
+        if (e.pointerType === "mouse") setHovered(true);
+      }}
+      onPointerLeave={(e) => {
+        if (e.pointerType === "mouse") setHovered(false);
+      }}
       onClick={() => {
-        // Only trigger flip-lock on touch devices
+        // En dispositivos táctiles, usamos el estado local manejado por onClick
         if (isTouch) onToggle();
       }}
       role="button"
