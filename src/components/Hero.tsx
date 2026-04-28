@@ -202,23 +202,73 @@ export default function Hero() {
 
             {/* Left: info card with toggle */}
             <div
-              className="relative rounded-2xl p-8 lg:p-10 flex flex-col justify-between
+              className="relative rounded-2xl p-5 sm:p-8 lg:p-10 flex flex-col justify-between
                           shadow-[0_0_0_1px_rgba(255,255,255,0.09),_0_24px_60px_-8px_rgba(0,0,0,0.5)]"
               style={{ backgroundColor: "var(--color-card)" }}
             >
               {/* Animated text content and Toggle */}
-              <div className="relative w-full">
-                <AnimatePresence mode="popLayout">
-                  {!showWhyUs ? (
-                    <motion.div
-                      key="info"
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      transition={{ duration: 0.3, ease: "easeOut" }}
-                      className="w-full"
-                    >
-                        <div className="flex justify-between items-start gap-4 mb-3">
+              <div className="relative">
+                {/* Invisible spacer to maintain static height based on the taller of the two views */}
+                <div aria-hidden="true" className="invisible pointer-events-none select-none grid overflow-hidden">
+                  {/* View 1: Trayectoria */}
+                  <div className="col-start-1 row-start-1">
+                    <div className="flex flex-wrap justify-between items-start gap-x-4 gap-y-3 mb-3">
+                      <p className="text-[11px] sm:text-xs font-medium tracking-[0.2em] sm:tracking-[0.3em] uppercase flex flex-wrap gap-x-1.5 leading-relaxed mt-1 flex-1">
+                        <span className="whitespace-nowrap">Fundada en 1996 ·</span>
+                        <span className="whitespace-nowrap">Maturín, Monagas</span>
+                      </p>
+                      <div className="flex-shrink-0 relative z-20">
+                        <CompactToggle isActive={showWhyUs} onToggle={() => {}} ariaLabel="Toggle" />
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-4 mb-4">
+                      <span className="font-extrabold leading-none tracking-tight" style={{ fontSize: "clamp(4rem, 8vw, 7rem)" }}>30</span>
+                      <div className="flex flex-col justify-start gap-1.5 pt-1">
+                        <span className="font-bold leading-none" style={{ fontSize: "clamp(1.9rem, 3.5vw, 3.2rem)" }}>años</span>
+                        <p className="font-medium leading-none" style={{ fontSize: "clamp(0.8rem, 1.4vw, 1rem)" }}>operando sin interrupciones</p>
+                      </div>
+                    </div>
+                    <div className="space-y-4 text-sm leading-relaxed max-w-lg">
+                      <p>Cuando la comunicación es crítica, la disponibilidad no es una opción. Como el único Distribuidor Certificado y Centro de Servicio Autorizado Motorola (SAM) en el oriente del país, somos el enlace vital para su operación.</p>
+                      <p>Diseñamos infraestructura resiliente que garantiza una conectividad sin interrupciones, operando con máxima eficiencia incluso en las ubicaciones más remotas o bajo las condiciones climáticas más extremas.</p>
+                    </div>
+                  </div>
+
+                  {/* View 2: Pillars (Confianza) */}
+                  <div className="col-start-1 row-start-1">
+                    <div className="flex flex-wrap justify-between items-start gap-x-4 gap-y-3 mb-5">
+                      <p className="text-[11px] sm:text-xs font-medium tracking-[0.2em] sm:tracking-[0.3em] uppercase mt-1 flex-1">
+                        ¿Por qué confiar en nuestra red?
+                      </p>
+                      <div className="flex-shrink-0 relative z-20">
+                        <CompactToggle isActive={showWhyUs} onToggle={() => {}} ariaLabel="Toggle" />
+                      </div>
+                    </div>
+                    <div className="divide-y divide-white/10">
+                      {pillars.map((pillar, i) => (
+                        <div key={`spacer-${i}`} className="flex items-start gap-3 py-4 first:pt-0 last:pb-0">
+                          <div className="w-7 h-7 flex-shrink-0 mt-0.5"></div>
+                          <div>
+                            <p className="font-semibold text-sm leading-tight mb-1">{pillar.title}</p>
+                            <p className="text-sm leading-relaxed">{pillar.description}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="absolute inset-x-0 top-0">
+                  <AnimatePresence mode="wait">
+                    {!showWhyUs ? (
+                      <motion.div
+                        key="info"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        transition={{ duration: 0.3, ease: "easeOut" }}
+                      >
+                        <div className="flex flex-wrap justify-between items-start gap-x-4 gap-y-3 mb-3">
                           <p className="text-white/65 text-[11px] sm:text-xs font-medium tracking-[0.2em] sm:tracking-[0.3em] uppercase flex flex-wrap gap-x-1.5 leading-relaxed mt-1 flex-1">
                             <span className="whitespace-nowrap">Fundada en 1996 ·</span>
                             <span className="whitespace-nowrap">Maturín, Monagas</span>
@@ -271,9 +321,8 @@ export default function Hero() {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -10 }}
                         transition={{ duration: 0.3, ease: "easeOut" }}
-                        className="w-full"
                       >
-                        <div className="flex justify-between items-start gap-4 mb-5">
+                        <div className="flex flex-wrap justify-between items-start gap-x-4 gap-y-3 mb-5">
                           <p className="text-white/65 text-[11px] sm:text-xs font-medium tracking-[0.2em] sm:tracking-[0.3em] uppercase mt-1 flex-1">
                             ¿Por qué confiar en nuestra red?
                           </p>
@@ -309,7 +358,7 @@ export default function Hero() {
               </div>
 
               {/* Static section - always visible */}
-              <div className="mt-5 pt-5 border-t border-white/10">
+              <div className="mt-8 pt-6 border-t border-white/10">
                 <p className="flex items-center gap-1.5 text-white/55 text-xs font-semibold tracking-widest uppercase mb-3">
                   <MapPin size={11} className="text-cta" aria-hidden="true" />
                   3 estados con cobertura activa
