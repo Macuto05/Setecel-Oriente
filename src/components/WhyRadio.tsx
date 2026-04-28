@@ -128,7 +128,7 @@ export default function WhyRadio() {
               key={item.tag}
               ref={(el) => { itemRefs.current[i] = el; }}
               role="listitem"
-              className={`relative overflow-hidden transition-[box-shadow] duration-300 hover:shadow-[inset_0_0_0_1px_rgba(15,82,232,0.5)] ${cellPadding[i]} ${cellBorders[i]}`}
+              className={`relative overflow-hidden transition-all duration-300 lg:hover:bg-[#0F52E8]/[0.03] lg:hover:shadow-[inset_0_0_0_1px_rgba(15,82,232,0.8)] ${cellPadding[i]} ${cellBorders[i]}`}
             >
               {/* Ordinal decorativo — depth sin competir con el contenido */}
               <span
@@ -189,27 +189,30 @@ export default function WhyRadio() {
         </div>
 
         {/* ── Pie de sección ────────────────────────────────── */}
-        <div className="mt-12 lg:mt-14 pt-8 border-t border-white/10 flex items-center justify-center gap-2.5">
-          <svg
-            width="14"
-            height="14"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            aria-hidden="true"
-            className="text-cta shrink-0"
-          >
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-          </svg>
-          <p
-            className="text-white/60 text-center font-medium"
-            style={{ fontSize: "clamp(0.85rem, 1.3vw, 1rem)", letterSpacing: "0.04em" }}
-          >
-            Equipos con certificación industrial y máxima resistencia al impacto.
-          </p>
+        <div className="mt-12 lg:mt-16 flex justify-center px-4">
+          <div className="inline-flex items-center gap-3 px-5 py-3.5 sm:px-8 sm:py-4 rounded-full bg-[#0a1128] border border-white/10 shadow-lg relative overflow-hidden">
+            <div className="absolute inset-0 bg-white/[0.02] pointer-events-none" />
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+              className="text-cta shrink-0 relative z-10"
+            >
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            </svg>
+            <p
+              className="text-white/75 text-center font-medium relative z-10"
+              style={{ fontSize: "clamp(0.85rem, 1.3vw, 0.95rem)", letterSpacing: "0.03em" }}
+            >
+              Equipos con certificación industrial y máxima resistencia al impacto.
+            </p>
+          </div>
         </div>
 
       </div>
