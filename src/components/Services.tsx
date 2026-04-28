@@ -91,10 +91,11 @@ interface CardProps {
   service: (typeof services)[0];
   index: number;
   isMobileFlipped: boolean;
+  isPeeking?: boolean;
   onToggle: () => void;
 }
 
-function ServiceCard({ service, index, isMobileFlipped, onToggle }: CardProps) {
+function ServiceCard({ service, index, isMobileFlipped, isPeeking, onToggle }: CardProps) {
   const [hovered, setHovered] = useState(false);
   const [isTouch, setIsTouch] = useState(false);
 
@@ -142,7 +143,7 @@ function ServiceCard({ service, index, isMobileFlipped, onToggle }: CardProps) {
           height: "100%",
           transformStyle: "preserve-3d",
           transition: "transform 0.65s cubic-bezier(0.45, 0, 0.55, 1)",
-          transform: flipped ? "rotateY(180deg)" : "rotateY(0deg)",
+          transform: flipped ? "rotateY(180deg)" : isPeeking ? "rotateY(25deg) scale(1.02)" : "rotateY(0deg)",
           willChange: "transform",
         }}
       >
@@ -208,7 +209,15 @@ function ServiceCard({ service, index, isMobileFlipped, onToggle }: CardProps) {
               >
                 {service.name}
               </p>
-              <div className={`mt-3 h-px ${hasImage ? "bg-white/20" : "bg-border"}`} />
+              <div className="flex items-center justify-between mt-3">
+                <div className={`h-px flex-1 ${hasImage ? "bg-white/20" : "bg-border"} mr-3`} />
+                <span className={`text-[9px] sm:text-[10px] font-semibold tracking-wider flex items-center gap-1 uppercase ${hasImage ? "text-white/70" : "text-ink-faint/80"}`}>
+                  Ver detalles
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                  </svg>
+                </span>
+              </div>
             </div>
           </div>
         </div>
@@ -284,14 +293,37 @@ function ServiceCard({ service, index, isMobileFlipped, onToggle }: CardProps) {
 
 export default function Services() {
   const [flippedIndex, setFlippedIndex] = useState<number | null>(null);
+  const [isPeeking, setIsPeeking] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            setIsPeeking(true);
+            setTimeout(() => setIsPeeking(false), 700);
+          }, 400);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.15 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   function handleToggle(i: number) {
-    setFlippedIndex(i);
+    setFlippedIndex(prev => prev === i ? null : i);
   }
 
   return (
     // bg-surface token class instead of hard-coded #F8FAFC — [P3 polish]
-    <section id="servicios" className="bg-surface py-24 lg:py-32">
+    <section id="servicios" ref={sectionRef} className="bg-surface py-24 lg:py-32">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
 
         <div className="mb-12 lg:mb-16">
@@ -313,6 +345,7 @@ export default function Services() {
               service={s}
               index={i}
               isMobileFlipped={flippedIndex === i}
+              isPeeking={isPeeking && i === 0}
               onToggle={() => handleToggle(i)}
             />
           ))}
