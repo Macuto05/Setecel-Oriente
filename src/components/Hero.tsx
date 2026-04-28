@@ -206,25 +206,21 @@ export default function Hero() {
                           shadow-[0_0_0_1px_rgba(255,255,255,0.09),_0_24px_60px_-8px_rgba(0,0,0,0.5)]"
               style={{ backgroundColor: "var(--color-card)" }}
             >
-              {/* Toggle in top right corner */}
-              <div className="absolute top-6 right-6 z-20">
-                <CompactToggle
-                  isActive={showWhyUs}
-                  onToggle={setShowWhyUs}
-                  ariaLabel="Toggle between information and why choose us"
-                />
-              </div>
-
-              {/* Animated text content only */}
+              {/* Animated text content and Toggle */}
               <div className="relative">
                 {/* Invisible spacer to maintain static height based on the taller of the two views */}
                 <div aria-hidden="true" className="invisible pointer-events-none select-none grid overflow-hidden">
                   {/* View 1: Trayectoria */}
                   <div className="col-start-1 row-start-1">
-                    <p className="text-[11px] sm:text-xs font-medium tracking-[0.2em] sm:tracking-[0.3em] uppercase mb-3 pr-[105px] md:pr-0 flex flex-wrap gap-x-1.5 leading-relaxed">
-                      <span className="whitespace-nowrap">Fundada en 1996 ·</span>
-                      <span className="whitespace-nowrap">Maturín, Monagas</span>
-                    </p>
+                    <div className="flex justify-between items-start gap-4 mb-3">
+                      <p className="text-[11px] sm:text-xs font-medium tracking-[0.2em] sm:tracking-[0.3em] uppercase flex flex-wrap gap-x-1.5 leading-relaxed mt-1 flex-1">
+                        <span className="whitespace-nowrap">Fundada en 1996 ·</span>
+                        <span className="whitespace-nowrap">Maturín, Monagas</span>
+                      </p>
+                      <div className="flex-shrink-0 relative z-20">
+                        <CompactToggle isActive={showWhyUs} onToggle={() => {}} ariaLabel="Toggle" />
+                      </div>
+                    </div>
                     <div className="flex items-start gap-4 mb-4">
                       <span className="font-extrabold leading-none tracking-tight" style={{ fontSize: "clamp(4rem, 8vw, 7rem)" }}>30</span>
                       <div className="flex flex-col justify-start gap-1.5 pt-1">
@@ -240,9 +236,14 @@ export default function Hero() {
 
                   {/* View 2: Pillars (Confianza) */}
                   <div className="col-start-1 row-start-1">
-                    <p className="text-[11px] sm:text-xs font-medium tracking-[0.2em] sm:tracking-[0.3em] uppercase mb-5 pr-[105px] md:pr-0">
-                      ¿Por qué confiar en nuestra red?
-                    </p>
+                    <div className="flex justify-between items-start gap-4 mb-5">
+                      <p className="text-[11px] sm:text-xs font-medium tracking-[0.2em] sm:tracking-[0.3em] uppercase mt-1 flex-1">
+                        ¿Por qué confiar en nuestra red?
+                      </p>
+                      <div className="flex-shrink-0 relative z-20">
+                        <CompactToggle isActive={showWhyUs} onToggle={() => {}} ariaLabel="Toggle" />
+                      </div>
+                    </div>
                     <div className="divide-y divide-white/10">
                       {pillars.map((pillar, i) => (
                         <div key={`spacer-${i}`} className="flex items-start gap-3 py-4 first:pt-0 last:pb-0">
@@ -267,10 +268,19 @@ export default function Hero() {
                         exit={{ opacity: 0, y: -10 }}
                         transition={{ duration: 0.3, ease: "easeOut" }}
                       >
-                        <p className="text-white/65 text-[11px] sm:text-xs font-medium tracking-[0.2em] sm:tracking-[0.3em] uppercase mb-3 pr-[105px] md:pr-0 flex flex-wrap gap-x-1.5 leading-relaxed">
-                          <span className="whitespace-nowrap">Fundada en 1996 ·</span>
-                          <span className="whitespace-nowrap">Maturín, Monagas</span>
-                        </p>
+                        <div className="flex justify-between items-start gap-4 mb-3">
+                          <p className="text-white/65 text-[11px] sm:text-xs font-medium tracking-[0.2em] sm:tracking-[0.3em] uppercase flex flex-wrap gap-x-1.5 leading-relaxed mt-1 flex-1">
+                            <span className="whitespace-nowrap">Fundada en 1996 ·</span>
+                            <span className="whitespace-nowrap">Maturín, Monagas</span>
+                          </p>
+                          <div className="flex-shrink-0 relative z-20 pointer-events-auto">
+                            <CompactToggle
+                              isActive={showWhyUs}
+                              onToggle={setShowWhyUs}
+                              ariaLabel="Toggle between information and why choose us"
+                            />
+                          </div>
+                        </div>
 
                         <div className="flex items-start gap-4 mb-4" aria-label="30 años operando sin interrupciones">
                           <span
@@ -312,9 +322,18 @@ export default function Hero() {
                         exit={{ opacity: 0, y: -10 }}
                         transition={{ duration: 0.3, ease: "easeOut" }}
                       >
-                        <p className="text-white/65 text-[11px] sm:text-xs font-medium tracking-[0.2em] sm:tracking-[0.3em] uppercase mb-5 pr-[105px] md:pr-0">
-                          ¿Por qué confiar en nuestra red?
-                        </p>
+                        <div className="flex justify-between items-start gap-4 mb-5">
+                          <p className="text-white/65 text-[11px] sm:text-xs font-medium tracking-[0.2em] sm:tracking-[0.3em] uppercase mt-1 flex-1">
+                            ¿Por qué confiar en nuestra red?
+                          </p>
+                          <div className="flex-shrink-0 relative z-20 pointer-events-auto">
+                            <CompactToggle
+                              isActive={showWhyUs}
+                              onToggle={setShowWhyUs}
+                              ariaLabel="Toggle between information and why choose us"
+                            />
+                          </div>
+                        </div>
                         <div className="divide-y divide-white/10">
                           {pillars.map((pillar, i) => (
                             <div key={i} className="flex items-start gap-3 py-4 first:pt-0 last:pb-0">
