@@ -221,7 +221,7 @@ export default function Hero() {
                 <div aria-hidden="true" className="invisible pointer-events-none select-none grid overflow-hidden">
                   {/* View 1: Trayectoria */}
                   <div className="col-start-1 row-start-1">
-                    <p className="text-xs font-medium tracking-[0.3em] uppercase mb-3 pr-[110px] md:pr-0">
+                    <p className="text-xs font-medium tracking-[0.3em] uppercase mb-3 pr-[130px] md:pr-0">
                       Fundada en 1996 · Maturín, Monagas
                     </p>
                     <div className="flex items-start gap-4 mb-4">
@@ -239,7 +239,7 @@ export default function Hero() {
 
                   {/* View 2: Pillars (Confianza) */}
                   <div className="col-start-1 row-start-1">
-                    <p className="text-xs font-medium tracking-[0.3em] uppercase mb-5 pr-[110px] md:pr-0">
+                    <p className="text-xs font-medium tracking-[0.3em] uppercase mb-5 pr-[130px] md:pr-0">
                       ¿Por qué confiar en nuestra red?
                     </p>
                     <div className="divide-y divide-white/10">
@@ -266,7 +266,7 @@ export default function Hero() {
                         exit={{ opacity: 0, y: -10 }}
                         transition={{ duration: 0.3, ease: "easeOut" }}
                       >
-                        <p className="text-white/65 text-xs font-medium tracking-[0.3em] uppercase mb-3 pr-[110px] md:pr-0">
+                        <p className="text-white/65 text-xs font-medium tracking-[0.3em] uppercase mb-3 pr-[130px] md:pr-0">
                           Fundada en 1996 · Maturín, Monagas
                         </p>
 
@@ -310,7 +310,7 @@ export default function Hero() {
                         exit={{ opacity: 0, y: -10 }}
                         transition={{ duration: 0.3, ease: "easeOut" }}
                       >
-                        <p className="text-white/65 text-xs font-medium tracking-[0.3em] uppercase mb-5 pr-[110px] md:pr-0">
+                        <p className="text-white/65 text-xs font-medium tracking-[0.3em] uppercase mb-5 pr-[130px] md:pr-0">
                           ¿Por qué confiar en nuestra red?
                         </p>
                         <div className="divide-y divide-white/10">

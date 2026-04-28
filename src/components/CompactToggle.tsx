@@ -31,8 +31,9 @@ export default function CompactToggle({
           <ChevronLeft size={14} className="text-white" />
         </motion.div>
       )}
-      <span className="text-[10px] sm:text-[11px] font-bold tracking-wider text-white uppercase mt-[1px]">
-        {isActive ? "Ver Trayectoria" : "Ver Confianza"}
+      <span className="flex flex-col items-center justify-center text-[10px] sm:text-[11px] font-bold tracking-widest text-white uppercase leading-[1.1] mt-[1px]">
+        <span className="text-[7.5px] sm:text-[8.5px] text-white/70 tracking-[0.2em] mb-[1px]">Ver</span>
+        <span>{isActive ? "Trayectoria" : "Confianza"}</span>
       </span>
       {!isActive && (
         <motion.div
