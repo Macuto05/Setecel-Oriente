@@ -156,10 +156,6 @@ export default function Hero() {
 
             {/* LEFT: Text content */}
             <div className="flex-1 min-w-0">
-              <p className="text-cta text-xs font-semibold tracking-[0.25em] uppercase mb-6">
-                Radiocomunicaciones · Nororiente Venezolano
-              </p>
-
               <h1
                 className="font-[family-name:var(--font-bodoni)] text-navy leading-[1.2] mb-6"
                 style={{ fontSize: "clamp(2.8rem, 4.8vw, 5.5rem)" }}

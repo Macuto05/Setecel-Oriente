@@ -47,7 +47,7 @@ export default function Navbar() {
         scrolled ? "bg-white shadow-sm" : "bg-transparent"
       )}
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between h-16 py-4">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between py-2">
         <a href="#" aria-label="SETECEL ORIENTE — Inicio">
           <Image
             src="/images/logos/logo-setecel.png"
@@ -55,7 +55,7 @@ export default function Navbar() {
             width={160}
             height={40}
             priority
-            style={{ width: "auto", height: "68px" }}
+            style={{ width: "auto", height: "78px" }}
           />
         </a>
 
