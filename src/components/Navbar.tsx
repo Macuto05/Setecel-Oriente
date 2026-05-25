@@ -44,7 +44,7 @@ export default function Navbar() {
     <header
       className={clsx(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        scrolled ? "bg-navy shadow-lg" : "bg-transparent"
+        scrolled ? "bg-white shadow-sm" : "bg-transparent"
       )}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between h-16 py-4">
@@ -55,7 +55,7 @@ export default function Navbar() {
             width={160}
             height={40}
             priority
-            style={{ width: "auto", height: "46px", filter: "brightness(0) invert(1)" }}
+            style={{ width: "auto", height: "68px" }}
           />
         </a>
 
@@ -64,7 +64,12 @@ export default function Navbar() {
             <a
               key={l.href}
               href={l.href}
-              className="text-white/80 hover:text-cta text-sm font-medium tracking-wide transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cta focus-visible:ring-offset-2 focus-visible:ring-offset-navy rounded-sm"
+              className={clsx(
+                "text-sm font-medium tracking-wide transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cta focus-visible:ring-offset-2 rounded-sm",
+                scrolled
+                  ? "text-slate-700 hover:text-cta focus-visible:ring-offset-white"
+                  : "text-slate-700 hover:text-cta focus-visible:ring-offset-transparent"
+              )}
             >
               {l.label}
             </a>
@@ -73,14 +78,20 @@ export default function Navbar() {
 
         <a
           href="#contacto"
-          className="hidden md:inline-flex items-center px-5 py-2.5 bg-cta hover:bg-cta-hover text-white text-sm font-semibold rounded-md transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-navy min-h-[44px]"
+          className={clsx(
+            "hidden md:inline-flex items-center px-5 py-2.5 bg-cta hover:bg-cta-hover text-white text-sm font-semibold rounded-md transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cta focus-visible:ring-offset-2 min-h-[44px]",
+            scrolled ? "focus-visible:ring-offset-white" : "focus-visible:ring-offset-transparent"
+          )}
         >
           Solicitar Cotización
         </a>
 
         <button
           ref={menuButtonRef}
-          className="md:hidden text-white min-h-[44px] min-w-[44px] flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-sm"
+          className={clsx(
+            "md:hidden min-h-[44px] min-w-[44px] flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-sm",
+            "text-slate-700"
+          )}
           onClick={() => setMenuOpen(true)}
           aria-label="Abrir menú"
           aria-expanded={menuOpen}

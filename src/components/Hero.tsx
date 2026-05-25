@@ -99,72 +99,141 @@ export default function Hero() {
 
   return (
     <section className="relative bg-navy overflow-hidden">
-      {/* ── UPPER SECTION: Hero with background image ──────────────────── */}
-      <div 
-        className="relative flex flex-col justify-center"
+      {/* ── UPPER SECTION: Unified surface, photo as contained card ──────── */}
+      <div
+        className="bg-surface flex items-center relative overflow-hidden"
         style={{ minHeight: vh }}
       >
-        <Image
-          src="/images/hero-bg-antenna.webp"
-          alt="Antenas parabólicas de radiocomunicación profesional montadas en mástil"
-          fill
-          priority
-          className="object-cover object-center"
-          sizes="100vw"
-        />
-
-        <div className="absolute inset-0 bg-navy/80" />
-
+        {/* Dot grid — brand texture adapted for light background */}
         <div
-          className="absolute inset-0 opacity-10"
-          style={{
-            backgroundImage: "radial-gradient(circle, #4A7FBA 1px, transparent 1px)",
-            backgroundSize: "32px 32px",
-          }}
+          className="absolute inset-0 pointer-events-none"
           aria-hidden="true"
+          style={{
+            backgroundImage: "radial-gradient(circle, rgba(11,31,58,0.13) 1.5px, transparent 1.5px)",
+            backgroundSize: "28px 28px",
+          }}
         />
+        {/* Radial glow — very subtle CTA accent, left zone */}
+        <div
+          className="absolute -top-32 -left-32 w-[700px] h-[700px] pointer-events-none"
+          aria-hidden="true"
+          style={{
+            background: "radial-gradient(circle at center, rgba(15,82,232,0.05) 0%, transparent 65%)",
+          }}
+        />
+        {/* Animated radio waves — centered in hero, behind all content */}
+        <div
+          className="absolute pointer-events-none"
+          aria-hidden="true"
+          style={{ left: "50%", top: "50%", width: "1px", height: "1px", zIndex: 0 }}
+        >
+          {[0, 1.0, 2.0, 3.0, 4.0].map((delay, i) => (
+            <motion.div
+              key={i}
+              initial={{ scale: 0.04, opacity: 0.8 }}
+              animate={{ scale: 1, opacity: 0 }}
+              transition={{
+                duration: 5,
+                delay,
+                repeat: Infinity,
+                ease: "easeOut",
+                repeatDelay: 0,
+              }}
+              style={{
+                position: "absolute",
+                width: "1100px",
+                height: "1100px",
+                left: "-550px",
+                top: "-550px",
+                borderRadius: "50%",
+                border: "3px solid rgba(15, 82, 232, 0.55)",
+              }}
+            />
+          ))}
+        </div>
+        <div className="w-full max-w-7xl mx-auto px-6 lg:px-12 py-28 lg:py-0 relative" style={{ zIndex: 1 }}>
+          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16 xl:gap-24">
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 pt-32 pb-24">
-          <p className="text-cta text-xs font-semibold tracking-[0.25em] uppercase mb-6">
-            Radiocomunicaciones · Nororiente Venezolano
-          </p>
+            {/* LEFT: Text content */}
+            <div className="flex-1 min-w-0">
+              <p className="text-cta text-xs font-semibold tracking-[0.25em] uppercase mb-6">
+                Radiocomunicaciones · Nororiente Venezolano
+              </p>
 
-          <h1
-            className="font-[family-name:var(--font-bodoni)] text-white leading-[1.3] mb-6 max-w-4xl"
-            style={{ fontSize: "clamp(3.2rem, 9.5vw, 8rem)" }}
-          >
-            Liderazgo{" "}
-            <span className="italic">sin interferencias.</span>
-          </h1>
+              <h1
+                className="font-[family-name:var(--font-bodoni)] text-navy leading-[1.2] mb-6"
+                style={{ fontSize: "clamp(2.8rem, 4.8vw, 5.5rem)" }}
+              >
+                Liderazgo{" "}
+                <span className="italic">sin interferencias.</span>
+              </h1>
 
-          <p className="text-white/70 text-lg font-light max-w-xl mb-10 leading-relaxed">
-            Único Distribuidor Certificado y Centro de Servicio Autorizado Motorola (SAM) en el nororiente venezolano.
-          </p>
+              <p className="text-ink-muted text-lg font-light max-w-md mb-10 leading-relaxed">
+                Único Distribuidor Certificado y Centro de Servicio Autorizado Motorola (SAM) en el nororiente venezolano.
+              </p>
 
-          <div className="flex flex-col sm:flex-row gap-4">
-            <a
-              href="#contacto"
-              className="inline-flex items-center justify-center px-8 py-4 bg-cta hover:bg-cta-hover text-white font-semibold rounded-md transition-colors duration-200 text-sm tracking-wide focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-navy"
-            >
-              Solicitar Cotización
-            </a>
-            <a
-              href="#servicios"
-              className="inline-flex items-center justify-center px-8 py-4 border border-white/30 hover:border-white/60 text-white font-medium rounded-md transition-colors duration-200 text-sm tracking-wide focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
-            >
-              Ver servicios
-            </a>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <a
+                  href="#contacto"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-cta hover:bg-cta-hover text-white font-semibold rounded-md transition-colors duration-200 text-sm tracking-wide focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cta focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
+                >
+                  Solicitar Cotización
+                </a>
+                <a
+                  href="#servicios"
+                  className="inline-flex items-center justify-center px-8 py-4 border border-navy/25 hover:border-navy/50 text-navy font-medium rounded-md transition-colors duration-200 text-sm tracking-wide focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy/30"
+                >
+                  Ver servicios
+                </a>
+              </div>
+            </div>
+
+            {/* RIGHT: Photo as contained card */}
+            <div className="relative flex-shrink-0 w-full lg:w-auto">
+
+              {/* Blue glow behind photo card */}
+              <div
+                className="absolute inset-0 pointer-events-none"
+                aria-hidden="true"
+                style={{
+                  background: "radial-gradient(ellipse at center, rgba(15,82,232,0.22) 0%, rgba(15,82,232,0.08) 45%, transparent 70%)",
+                  transform: "scale(1.4)",
+                  filter: "blur(24px)",
+                }}
+              />
+
+              {/* Photo card */}
+              <div
+                className="relative w-full lg:w-[420px] xl:w-[480px] h-[340px] lg:h-[520px] xl:h-[580px] rounded-2xl overflow-hidden ring-1 ring-navy/10"
+                style={{ boxShadow: "0 30px 70px rgba(11,31,58,0.18), 0 8px 24px rgba(11,31,58,0.10)" }}
+              >
+                <Image
+                  src="/images/hero-bg-antenna.webp"
+                  alt="Antenas parabólicas de radiocomunicación profesional montadas en mástil"
+                  fill
+                  priority
+                  className="object-cover object-center"
+                  sizes="(max-width: 1024px) 100vw, 480px"
+                />
+              </div>
+
+              {/* Floating badge — operational promise */}
+              <div className="absolute -bottom-5 -left-4 lg:-left-8 bg-navy text-white rounded-xl px-5 py-4 shadow-xl">
+                <span className="block text-white/50 text-[9px] font-bold tracking-[0.3em] uppercase mb-1">
+                  Infraestructura propia
+                </span>
+                <span className="block font-bold text-white leading-none tracking-wide text-base">
+                  Señal activa
+                </span>
+                <span className="block text-white/50 text-[9px] font-medium tracking-wide mt-1 uppercase">
+                  24 horas · 7 días
+                </span>
+              </div>
+
+            </div>
+
           </div>
         </div>
-
-        {/* Gradient fade from hero to nosotros section — seamless connection */}
-        <div
-          className="absolute bottom-0 inset-x-0 h-96 pointer-events-none"
-          style={{
-            background: "linear-gradient(to bottom, transparent 0%, rgba(11,31,58,0.08) 15%, rgba(11,31,58,0.2) 30%, rgba(11,31,58,0.4) 50%, rgba(11,31,58,0.65) 70%, rgb(11,31,58) 100%)",
-          }}
-          aria-hidden="true"
-        />
       </div>
 
       {/* ── LOWER SECTION: Stats & Sectors (integrated as nosotros extension) ──────── */}
